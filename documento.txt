@@ -1,0 +1,183 @@
+Taller Práctico — API RESTful con Spring Boot + H2
+Programación Backend — Desarrollo de APIs REST
+Objetivo del Taller
+Desarrollar una API RESTful utilizando Spring Boot para administrar un catálogo de
+productos de un e-commerce, aplicando arquitectura por capas, validaciones,
+manejo de excepciones y documentación automática con Swagger/OpenAPI.
+Indicaciones Generales
+• El ejercicio debe desarrollarse en NetBeans.
+• Se debe utilizar Java 17 o superior.
+• La base de datos obligatoria será H2 Database.
+• El proyecto debe ejecutarse localmente.
+• No se requiere frontend.
+• Se permite el uso de herramientas de IA como apoyo académico.
+• Deben comprender y poder explicar el código entregado.
+• Pueden usar IA para la elaboración del ejercicio, pero deben estar en la
+capacidad de poder explicar lo que hicieron, no es solo copiar y pegar
+Enunciado del Ejercicio
+Construya una API RESTful con Spring Boot para gestionar un catálogo de productos
+de un e-commerce.
+La API debe exponer los siguientes endpoints:
+Método Endpoint Función
+GET /products Listar productos con paginación
+GET /products/{id} Obtener producto por ID
+POST /products Crear producto
+Método Endpoint Función
+PUT /products/{id} Actualizar producto
+DELETE /products/{id} Eliminar producto
+Modelo Product
+La entidad Product debe contener los siguientes atributos:
+Campo Tipo
+id Long
+name String
+description String
+price Double
+stock Integer
+category String
+createdAt LocalDateTime
+Arquitectura Obligatoria
+El proyecto debe organizarse utilizando arquitectura por capas:
+controller
+service
+repository
+entity
+exception
+config
+Tecnologías Obligatorias
+El proyecto debe incluir:
+• Spring Web
+• Spring Data JPA
+• Validation
+• H2 Database
+• Swagger/OpenAPI
+Configuración Obligatoria
+Base de Datos H2
+Debe configurarse correctamente en application.properties.
+La consola H2 debe estar habilitada.
+Ruta esperada:
+http://localhost:8080/h2-console
+Requisitos Funcionales
+1. Listado de productos
+Endpoint:
+GET /products
+Debe:
+• Implementar paginación
+• Utilizar Pageable
+• Permitir parámetros page y size
+Ejemplo:
+/products?page=0&size=5
+2. Obtener producto por ID
+Endpoint:
+GET /products/{id}
+Debe retornar:
+• Producto encontrado
+• Error 404 si no existe
+3. Crear producto
+Endpoint:
+POST /products
+Debe:
+• Validar los datos recibidos
+• Guardar el producto
+• Retornar código HTTP 201
+Ejemplo JSON:
+{
+"name": "Laptop Gamer",
+"description": "RTX 4060",
+"price": 4500.0,
+"stock": 10,
+"category": "Tecnologia"
+}
+4. Actualizar producto
+Endpoint:
+PUT /products/{id}
+Debe:
+• Verificar si el producto existe
+• Actualizar información
+• Retornar el producto actualizado
+5. Eliminar producto
+Endpoint:
+DELETE /products/{id}
+Debe:
+• Eliminar el producto
+• Retornar respuesta correcta
+Validaciones Obligatorias
+Se deben implementar validaciones utilizando Bean Validation.
+Campo Validación mínima
+name @NotBlank
+price @Positive
+stock @Min(0)
+category @NotBlank
+Manejo de Excepciones
+El proyecto debe implementar:
+• Excepción personalizada ProductNotFoundException
+• Manejo global con @ControllerAdvice
+• Respuestas HTTP apropiadas
+Respuestas HTTP Esperadas
+Código Significado
+200 Consulta exitosa
+201 Creación exitosa
+204 Eliminación exitosa
+400 Error de validación
+404 Recurso no encontrado
+500 Error interno
+Swagger/OpenAPI
+El proyecto debe documentarse utilizando:
+• @Operation
+• @ApiResponse
+La documentación debe visualizarse desde:
+http://localhost:8080/swagger-ui.html
+Entregables
+Cada estudiante debe entregar:
+1. Proyecto completo
+Archivo comprimido .zip
+2. Evidencias
+Capturas de pantalla de:
+• Proyecto ejecutándose
+• Swagger funcionando
+• Consola H2 funcionando
+• GET funcionando
+• POST funcionando
+• PUT funcionando
+• DELETE funcionando
+3. Sustentación
+Deben estar preparado para explicar:
+• Arquitectura del proyecto
+• Funcionamiento de endpoints
+• Validaciones
+• Manejo de excepciones
+• Uso de H2
+• Uso de Swagger
+Criterios de Evaluación
+Criterio Porcentaje
+Arquitectura por capas 20%
+Endpoints funcionales 25%
+Uso correcto de anotaciones 15%
+Validaciones 10%
+Manejo de excepciones 10%
+Paginación 10%
+Swagger/OpenAPI 10%
+Recomendaciones
+• Mantener el código organizado.
+• Utilizar nombres claros.
+• Probar todos los endpoints.
+• Verificar respuestas HTTP.
+• Documentar correctamente la API.
+• Comprender el funcionamiento del código generado con IA.
+Puntos Extra (Opcional)
+Los estudiantes pueden agregar:
+• Búsqueda por categoría
+• Búsqueda por nombre
+• Ordenamiento dinámico
+• DTOs
+• JWT
+• Pruebas unitarias
+Fecha de Entrega
+8 de mayo 7:30 pm
+Nota Importante
+No se evalúa únicamente que el proyecto funcione.
+También se evaluará:
+• Comprensión del código
+• Buenas prácticas
+• Organización
+• Claridad de la arquitectura
+• Capacidad de explicar la solución

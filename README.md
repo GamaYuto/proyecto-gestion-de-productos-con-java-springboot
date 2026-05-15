@@ -1,22 +1,26 @@
-# Proyecto de Gestión de Productos - Spring Boot
+# Proyecto de Gestión de Productos - Spring Boot (Taller Práctico)
 
-Este es un proyecto de ejemplo para la gestión de productos desarrollado con **Java 17** y **Spring Boot 3**. Implementa una API REST completa siguiendo una arquitectura de capas (Controlador, Servicio, Repositorio y Modelo).
+Este proyecto es una API RESTful desarrollada con **Java 17** y **Spring Boot 3** para administrar un catálogo de productos de un e-commerce. Implementa una arquitectura por capas, validaciones de datos, manejo global de excepciones y documentación automática con Swagger.
 
-## 🚀 Tecnologías Utilizadas
+## 🚀 Tecnologías y Requisitos
 
 *   **Java 17**
 *   **Spring Boot 3.2.5**
-*   **Spring Data JPA** (Persistencia de datos)
-*   **H2 Database** (Base de datos en memoria para desarrollo)
-*   **Lombok** (Reducción de código boilerplate)
 *   **Maven** (Gestión de dependencias)
+*   **H2 Database** (Base de datos en memoria)
+*   **Springdoc-OpenAPI** (Swagger UI)
+*   **Bean Validation** (Validaciones de entrada)
+*   **Lombok**
 
-## 📋 Requisitos Previos
+## 📋 Requisitos del Taller Cumplidos
 
-Para ejecutar este proyecto, asegúrate de tener instalado:
-
-*   **JDK 17** o superior.
-*   **Maven** 3.6+.
+- [x] **Arquitectura:** controller, service, repository, entity, exception, dto.
+- [x] **Entidad Product:** id, name, description, price, stock, category, createdAt.
+- [x] **Validaciones:** @NotBlank, @Positive, @Min(0).
+- [x] **Excepciones:** ProductNotFoundException personalizada y GlobalExceptionHandler.
+- [x] **Paginación:** Parámetros `page` y `size` en el listado.
+- [x] **Swagger/OpenAPI:** Documentación integrada y accesible.
+- [x] **Puntos Extra:** Implementación de **DTOs** para separar la lógica de persistencia de la de transferencia.
 
 ## 🛠️ Instalación y Ejecución
 
@@ -26,43 +30,43 @@ Para ejecutar este proyecto, asegúrate de tener instalado:
     cd proyecto-gestion-de-productos-con-java-springboot
     ```
 
-2.  **Compilar y ejecutar el proyecto:**
-    Puedes usar el comando de Maven para arrancar la aplicación directamente:
+2.  **Ejecutar la aplicación:**
     ```bash
     mvn spring-boot:run
     ```
 
-3.  **Acceso a la aplicación:**
-    La aplicación estará disponible en: `http://localhost:8080`
+3.  **Acceso a la Documentación (Swagger):**
+    Una vez iniciada la aplicación, accede a:
+    [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
 
-## 📡 Endpoints de la API (REST)
+## 📡 Endpoints de la API
 
-| Acción | Método | Endpoint | Descripción |
+| Acción | Método | Endpoint | Parámetros |
 | :--- | :--- | :--- | :--- |
-| **Listar** | `GET` | `/api/productos` | Obtiene todos los productos |
-| **Obtener** | `GET` | `/api/productos/{id}` | Obtiene un producto por su ID |
-| **Crear** | `POST` | `/api/productos` | Crea un nuevo producto |
-| **Actualizar** | `PUT` | `/api/productos/{id}` | Actualiza un producto existente |
-| **Eliminar** | `DELETE` | `/api/productos/{id}` | Elimina un producto por ID |
+| **Listar** | `GET` | `/products` | `page`, `size` (Opcionales) |
+| **Obtener** | `GET` | `/products/{id}` | - |
+| **Crear** | `POST` | `/products` | Body (JSON) |
+| **Actualizar** | `PUT` | `/products/{id}` | Body (JSON) |
+| **Eliminar** | `DELETE` | `/products/{id}` | - |
 
 ### Ejemplo de JSON para POST/PUT:
 ```json
 {
-    "nombre": "Laptop Pro",
-    "descripcion": "16GB RAM, 512GB SSD",
-    "precio": 1200.50,
-    "cantidad": 10
+    "name": "Laptop Gamer",
+    "description": "RTX 4060, 16GB RAM",
+    "price": 4500.0,
+    "stock": 10,
+    "category": "Tecnología"
 }
 ```
 
-## 📊 Base de Datos
+## 📊 Base de Datos H2
 
-El proyecto utiliza una base de datos **H2** en memoria. Puedes acceder a la consola de administración mientras la aplicación está corriendo en:
-
+Acceso a la consola de administración (con la aplicación corriendo):
 *   **URL:** `http://localhost:8080/h2-console`
 *   **JDBC URL:** `jdbc:h2:mem:productosdb`
 *   **Usuario:** `sa`
 *   **Contraseña:** (vacío)
 
 ---
-Proyecto desarrollado para la entrega de gestión de productos.
+Proyecto desarrollado para el Taller Práctico de Programación Backend.
